@@ -1,19 +1,22 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div id="app"></div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HelloWorld from './components/HelloWorld.vue';
+import { ref, onMounted } from 'vue';
+import { useMouse } from '@vueuse/core';
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+};
+console.log(99, useMouse());
+onMounted(() => {
+  const { x, y } = useMouse();
+  console.log(222, x.value, y);
+});
 </script>
 
 <style>
